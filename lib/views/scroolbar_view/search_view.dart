@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -14,45 +11,45 @@ class _SearchViewState extends State<SearchView> {
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context).size;
-    return Column(
-      children: [
-        Text('Hello world'),
-        Expanded(
-          child: ListView.builder(
-            itemCount: 5,
-            scrollDirection: Axis.vertical,
-            itemBuilder: ((context, index) => Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(1.0),
-                      child: Container(
-                        height: mediaQuery.width / 3.1,
-                        width: mediaQuery.width / 3.1,
-                        decoration: BoxDecoration(color: Colors.blue),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(1.0),
-                      child: Container(
-                        height: mediaQuery.width / 3.1,
-                        width: mediaQuery.width / 3.1,
-                        decoration: BoxDecoration(color: Colors.blue),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(1.0),
-                      child: Container(
-                        height: mediaQuery.width / 3.1,
-                        width: mediaQuery.width / 3.1,
-                        decoration: BoxDecoration(color: Colors.blue),
-                      ),
-                    ),
-                  ],
-                )),
+    return SafeArea(
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: Container(
+              padding: const EdgeInsets.all(10),
+              height: 40,
+              width: mediaQuery.width,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(13),
+                color: const Color.fromARGB(255, 240, 239, 237),
+              ),
+              child: const TextField(
+                decoration: InputDecoration(
+                  hintText: ' Search',
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
           ),
-        ),
-      ],
+          Expanded(
+              child: GridView.builder(
+            //
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3),
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.all(1.0),
+                child: Container(
+                  height: mediaQuery.width / 3,
+                  width: mediaQuery.width / 3,
+                  decoration: BoxDecoration(color: Colors.blue),
+                ),
+              );
+            },
+          ))
+        ],
+      ),
     );
   }
 }

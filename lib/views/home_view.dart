@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:recipe_2/views/scroolbar_view/notification_view.dart';
 import 'package:recipe_2/views/scroolbar_view/scroll_option_1.dart';
 import 'package:recipe_2/views/scroolbar_view/search_view.dart';
+import 'package:unicons/unicons.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,36 +18,22 @@ class _HomeState extends State<Home> {
     const HomeView(),
     const SearchView(),
     Text('3'),
-    Text('4'),
+    const NotificationView(),
     Text('5'),
   ];
   @override
   Widget build(BuildContext context) {
+    Color blackColor = Colors.black;
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        actionsIconTheme: const IconThemeData(color: Colors.black),
-        actions: const [
-          Icon(Icons.add_box_outlined),
-          SizedBox(width: 15),
-          Icon(Icons.message_outlined),
-          SizedBox(width: 15),
-        ],
-        title: const Text(
-          'Instagram',
-          style: TextStyle(
-            fontSize: 29,
-            color: Colors.black,
-          ),
-        ),
-      ),
       body: bottomBarItems[index],
       bottomNavigationBar: BottomNavigationBar(
-        selectedIconTheme: const IconThemeData(color: Colors.black),
-        unselectedIconTheme: const IconThemeData(color: Colors.black),
+        selectedItemColor: blackColor,
+        unselectedItemColor: blackColor,
         showSelectedLabels: false,
         showUnselectedLabels: false,
         currentIndex: index,
+        elevation: 10,
         onTap: (value) {
           setState(() {
             index = value;
@@ -54,26 +43,26 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             label: 'home',
             icon: Icon(
-              Icons.home_outlined,
-              size: 35,
+              FeatherIcons.home,
+              size: 30,
             ),
             activeIcon: Icon(
-              Icons.home,
-              size: 35,
+              Icons.home_filled,
+              color: Colors.black,
+              size: 30,
             ),
           ),
           BottomNavigationBarItem(
             label: 'search',
             icon: Icon(
-              Icons.search,
-              size: 35,
+              UniconsLine.search,
+              size: 30,
             ),
           ),
           BottomNavigationBarItem(
             label: 'video',
             icon: Icon(
-              Icons.video_call_outlined,
-              color: Colors.black,
+              UniconsLine.video,
               size: 35,
             ),
           ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 
 import 'package:recipe_2/widget_to_use/stories_icon.dart';
+import 'package:unicons/unicons.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -13,96 +15,115 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context).size;
-    return ListView(
-      scrollDirection: Axis.vertical,
-      children: [
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Row(
-              children: [
-                storie,
-                storie,
-                storie,
-                storie,
-                storie,
-                storie,
-                storie,
-                storie,
-              ],
-            ),
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        actionsIconTheme: const IconThemeData(color: Colors.black),
+        title: const Text(
+          'Instagram',
+          style: TextStyle(
+            fontSize: 29,
+            color: Colors.black,
           ),
         ),
-        const SizedBox(height: 10),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: mediaQuery.width / 60),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  userProfile,
-                  const InkWell(
-                    child: Icon(
-                      Icons.menu_sharp,
+        actions: const [
+          Icon(Icons.add_box_outlined),
+          SizedBox(width: 15),
+          Icon(UniconsLine.facebook_messenger_alt),
+          SizedBox(width: 15),
+        ],
+      ),
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: Expanded(
+              child: ListView.builder(
+                itemCount: 4,
+                itemBuilder: (context, index) => profileColumn(
+                  verticalPadding: 8.0,
+                  horizontalPadding: 5.0,
+                  storieBorderRadius: 3,
+                  storieSizeRadius: 35,
+                  userNames: 'userNames',
+                  userNamesFontSize: 10,
+                ),
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 5),
+          const Divider(color: Color.fromRGBO(158, 158, 158, 1)),
+          //*Label names and menue here
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding:
+                    EdgeInsets.symmetric(horizontal: mediaQuery.width / 60),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    userProfile,
+                    InkWell(
+                      child: Icon(FeatherIcons.moreVertical),
+                    )
+                  ],
+                ),
+              ),
+              const SizedBox(height: 7),
+              //*Container post start here
+              Container(
+                height: mediaQuery.width,
+                color: Colors.blue,
+                child: const Center(
+                  child: Text('Image shoud be here'),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: const [
+                    Icon(
+                      Icons.favorite,
+                      color: Colors.red,
+                      size: 30,
                     ),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              height: mediaQuery.width,
-              color: Colors.blue,
-              child: const Center(
-                child: Text('Image shoud be here'),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: const [
-                  Icon(
-                    Icons.favorite_border_outlined,
-                    size: 30,
-                  ),
-                  SizedBox(width: 7),
-                  Icon(
-                    Icons.comment_outlined,
-                    size: 30,
-                  ),
-                  SizedBox(width: 7),
-                  Icon(
-                    Icons.send_outlined,
-                    size: 30,
-                  ),
-                  Spacer(),
-                  Icon(
-                    Icons.save_alt,
-                    size: 30,
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
-                  Text(
-                    '122 likes',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
+                    SizedBox(width: 10),
+                    Icon(FeatherIcons.messageCircle),
+                    SizedBox(width: 10),
+                    Icon(
+                      FeatherIcons.send,
+                      size: 25,
                     ),
-                  ),
-                  Text('see all comments'),
-                ],
+                    Spacer(),
+                    Icon(
+                      FeatherIcons.bookmark,
+                      size: 30,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
-        )
-      ],
+              //*Footer Likes and comments
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: const [
+                    Text(
+                      '122 likes',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text('see all comments'),
+                  ],
+                ),
+              ),
+            ],
+          )
+        ],
+      ),
     );
   }
 }

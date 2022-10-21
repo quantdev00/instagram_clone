@@ -1,52 +1,115 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_2/constant/constants.dart';
 
-Widget storie = Column(
-  children: [
-    Padding(
-      padding: const EdgeInsets.symmetric(
-        vertical: 8.0,
-        horizontal: 5.0,
-      ),
-      child: RotatedBox(
-        quarterTurns: 30,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(64),
-            color: Colors.red,
-            gradient: SweepGradient(
-              colors: [
-                Style.orange,
-                Style.red,
-                Style.purple,
-                Style.purple,
-                Style.purple,
-                Style.red,
-                Style.orange,
-                Style.orange,
-                Style.orange,
-              ],
+Widget profileColumn({
+  required double verticalPadding,
+  required double horizontalPadding,
+  required double storieBorderRadius,
+  required double storieSizeRadius,
+  required String userNames,
+  required double userNamesFontSize,
+}) =>
+    Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: verticalPadding,
+            horizontal: horizontalPadding,
+          ),
+          child: RotatedBox(
+            quarterTurns: 30,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(64),
+                color: Colors.red,
+                gradient: SweepGradient(
+                  colors: [
+                    Style.orange,
+                    Style.red,
+                    Style.purple,
+                    Style.purple,
+                    Style.purple,
+                    Style.red,
+                    Style.orange,
+                    Style.orange,
+                    Style.orange,
+                  ],
+                ),
+              ),
+              padding: EdgeInsets.all(storieBorderRadius),
+              child: CircleAvatar(
+                radius: storieSizeRadius,
+              ),
             ),
           ),
-          padding: const EdgeInsets.all(3),
-          child: CircleAvatar(
-            radius: 35,
+        ),
+        Text(
+          userNames,
+          style: TextStyle(
+            fontSize: userNamesFontSize,
+            fontWeight: FontWeight.bold,
+          ),
+        )
+      ],
+    );
+
+Widget profileRow({
+  required double verticalPadding,
+  required double horizontalPadding,
+  required double storieBorderRadius,
+  required double storieSizeRadius,
+  required String userNames,
+  required double userNamesFontSize,
+}) =>
+    Row(
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: verticalPadding,
+            horizontal: horizontalPadding,
+          ),
+          child: RotatedBox(
+            quarterTurns: 30,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(64),
+                color: Colors.red,
+                gradient: SweepGradient(
+                  colors: [
+                    Style.orange,
+                    Style.red,
+                    Style.purple,
+                    Style.purple,
+                    Style.purple,
+                    Style.red,
+                    Style.orange,
+                    Style.orange,
+                    Style.orange,
+                  ],
+                ),
+              ),
+              padding: EdgeInsets.all(storieBorderRadius),
+              child: CircleAvatar(
+                radius: storieSizeRadius,
+              ),
+            ),
           ),
         ),
-      ),
-    ),
-    Text(
-      'Names ',
-      style: TextStyle(fontSize: 10),
-    )
-  ],
-);
+        Text(
+          userNames,
+          style: TextStyle(
+            fontSize: userNamesFontSize,
+            fontWeight: FontWeight.bold,
+          ),
+        )
+      ],
+    );
 
 Widget userProfile = Row(
   children: [
     Padding(
       padding: const EdgeInsets.symmetric(
-        vertical: 8.0,
+        vertical: 0,
         horizontal: 5.0,
       ),
       child: RotatedBox(
