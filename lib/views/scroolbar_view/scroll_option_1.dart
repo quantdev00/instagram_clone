@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:recipe_2/widget_to_use/function_to_use.dart';
 
 import 'package:recipe_2/widget_to_use/stories_icon.dart';
 import 'package:unicons/unicons.dart';
@@ -17,6 +18,7 @@ class _HomeViewState extends State<HomeView> {
     final mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
+        elevation: 1,
         backgroundColor: Colors.white,
         actionsIconTheme: const IconThemeData(color: Colors.black),
         title: const Text(
@@ -34,29 +36,25 @@ class _HomeViewState extends State<HomeView> {
         ],
       ),
       body: ListView(
+        scrollDirection: Axis.vertical,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Expanded(
-              child: ListView.builder(
-                itemCount: 4,
-                itemBuilder: (context, index) => profileColumn(
-                  verticalPadding: 8.0,
-                  horizontalPadding: 5.0,
-                  storieBorderRadius: 3,
-                  storieSizeRadius: 35,
-                  userNames: 'userNames',
-                  userNamesFontSize: 10,
-                ),
-              ),
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                storyProfile,
+                storyProfile,
+                storyProfile,
+                storyProfile,
+                storyProfile,
+              ],
             ),
           ),
 
           const SizedBox(height: 5),
           const Divider(color: Color.fromRGBO(158, 158, 158, 1)),
-          //*Label names and menue here
+          //*Label names and menu here
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
                 padding:
@@ -64,8 +62,15 @@ class _HomeViewState extends State<HomeView> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    userProfile,
-                    InkWell(
+                    profileRow(
+                      verticalPadding: 0,
+                      horizontalPadding: 5.0,
+                      storieBorderRadius: 2,
+                      storieSizeRadius: 16,
+                      userNames: 'username',
+                      userNamesFontSize: 12,
+                    ),
+                    const InkWell(
                       child: Icon(FeatherIcons.moreVertical),
                     )
                   ],

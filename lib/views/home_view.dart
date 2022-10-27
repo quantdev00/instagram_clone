@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:recipe_2/views/scroolbar_view/notification_view.dart';
+import 'package:recipe_2/views/scroolbar_view/profile_view.dart';
 import 'package:recipe_2/views/scroolbar_view/scroll_option_1.dart';
 import 'package:recipe_2/views/scroolbar_view/search_view.dart';
+import 'package:recipe_2/views/scroolbar_view/video_view.dart';
 import 'package:unicons/unicons.dart';
 
 class Home extends StatefulWidget {
@@ -13,18 +17,19 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Color blackColor = Colors.black;
+  Color myBackgroundColor = Colors.white;
+
   var index = 0;
   List<Widget> bottomBarItems = [
     const HomeView(),
     const SearchView(),
-    Text('3'),
+    const VideosView(),
     const NotificationView(),
-    Text('5'),
+    const ProfileView(),
   ];
   @override
   Widget build(BuildContext context) {
-    Color blackColor = Colors.black;
-
     return Scaffold(
       body: bottomBarItems[index],
       bottomNavigationBar: BottomNavigationBar(
@@ -37,22 +42,36 @@ class _HomeState extends State<Home> {
         onTap: (value) {
           setState(() {
             index = value;
+            if (index == 2) {
+              blackColor = Colors.white;
+              // myBackgroundColor = Colors.black;
+            } else {
+              blackColor = Colors.black;
+              // myBackgroundColor = Colors.white;
+            }
+          });
+
+          setState(() {
+            if (index != 2) {
+              myBackgroundColor = Colors.white;
+              log(index.toString());
+            } else {
+              log(index.toString());
+              myBackgroundColor = Colors.black;
+            }
           });
         },
-        items: const [
+        items: [
           BottomNavigationBarItem(
+            backgroundColor: myBackgroundColor,
             label: 'home',
             icon: Icon(
               FeatherIcons.home,
               size: 30,
             ),
-            activeIcon: Icon(
-              Icons.home_filled,
-              color: Colors.black,
-              size: 30,
-            ),
           ),
           BottomNavigationBarItem(
+            backgroundColor: myBackgroundColor,
             label: 'search',
             icon: Icon(
               UniconsLine.search,
@@ -60,6 +79,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           BottomNavigationBarItem(
+            backgroundColor: myBackgroundColor,
             label: 'video',
             icon: Icon(
               UniconsLine.video,
@@ -67,6 +87,7 @@ class _HomeState extends State<Home> {
             ),
           ),
           BottomNavigationBarItem(
+              backgroundColor: myBackgroundColor,
               label: 'like',
               icon: Icon(
                 Icons.favorite_border_outlined,
@@ -77,6 +98,7 @@ class _HomeState extends State<Home> {
                 size: 35,
               )),
           BottomNavigationBarItem(
+            backgroundColor: myBackgroundColor,
             label: 'home',
             icon: Icon(
               Icons.circle_outlined,

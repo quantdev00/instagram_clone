@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:recipe_2/widget_to_use/stories_icon.dart';
 
 class NotificationView extends StatefulWidget {
@@ -16,12 +14,26 @@ class _NotificationViewState extends State<NotificationView> {
     return Container(
       padding: const EdgeInsets.all(10),
       child: ListView.builder(
-          itemBuilder: ((context, index) => Row(
-                children: [
-                  userProfile,
-                  Text('notification details'),
-                ],
-              ))),
+        itemBuilder: ((context, index) => Column(
+              children: [
+                Row(
+                  children: [
+                    profileRow(
+                      verticalPadding: 0,
+                      horizontalPadding: 5.0,
+                      storieBorderRadius: 2,
+                      storieSizeRadius: 26,
+                      userNames: 'username',
+                      userNamesFontSize: 12,
+                    ),
+                    const SizedBox(width: 5),
+                    const Text('notification details'),
+                  ],
+                ),
+                const SizedBox(height: 20),
+              ],
+            )),
+      ),
     );
   }
 }

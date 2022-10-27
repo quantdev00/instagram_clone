@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_2/constant/constants.dart';
 
 class SearchView extends StatefulWidget {
   const SearchView({super.key});
@@ -22,7 +23,7 @@ class _SearchViewState extends State<SearchView> {
               width: mediaQuery.width,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(13),
-                color: const Color.fromARGB(255, 240, 239, 237),
+                color: Style.grey,
               ),
               child: const TextField(
                 decoration: InputDecoration(
@@ -43,7 +44,7 @@ class _SearchViewState extends State<SearchView> {
                 child: Container(
                   height: mediaQuery.width / 3,
                   width: mediaQuery.width / 3,
-                  decoration: BoxDecoration(color: Colors.blue),
+                  decoration: const BoxDecoration(color: Colors.blue),
                 ),
               );
             },
