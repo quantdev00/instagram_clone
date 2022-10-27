@@ -33,6 +33,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       body: bottomBarItems[index],
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         selectedItemColor: blackColor,
         unselectedItemColor: blackColor,
         showSelectedLabels: false,
@@ -65,7 +66,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             backgroundColor: myBackgroundColor,
             label: 'home',
-            icon: Icon(
+            icon: const Icon(
               FeatherIcons.home,
               size: 30,
             ),
@@ -73,7 +74,7 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             backgroundColor: myBackgroundColor,
             label: 'search',
-            icon: Icon(
+            icon: const Icon(
               UniconsLine.search,
               size: 30,
             ),
@@ -81,26 +82,27 @@ class _HomeState extends State<Home> {
           BottomNavigationBarItem(
             backgroundColor: myBackgroundColor,
             label: 'video',
-            icon: Icon(
+            icon: const Icon(
               UniconsLine.video,
               size: 35,
             ),
           ),
           BottomNavigationBarItem(
-              backgroundColor: myBackgroundColor,
-              label: 'like',
-              icon: Icon(
-                Icons.favorite_border_outlined,
-                size: 35,
-              ),
-              activeIcon: Icon(
-                Icons.favorite,
-                size: 35,
-              )),
+            backgroundColor: myBackgroundColor,
+            label: 'like',
+            icon: const Icon(
+              Icons.favorite_border_outlined,
+              size: 35,
+            ),
+            activeIcon: const Icon(
+              Icons.favorite,
+              size: 35,
+            ),
+          ),
           BottomNavigationBarItem(
             backgroundColor: myBackgroundColor,
             label: 'home',
-            icon: Icon(
+            icon: const Icon(
               Icons.circle_outlined,
               size: 35,
             ),

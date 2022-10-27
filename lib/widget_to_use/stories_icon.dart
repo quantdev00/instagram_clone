@@ -56,9 +56,9 @@ Widget profileColumn({
 Widget profileRow({
   required double verticalPadding,
   required double horizontalPadding,
-  required double? storieBorderRadius,
+  required double storieBorderRadius,
   required double storieSizeRadius,
-  required String? userNames,
+  required String userNames,
   required double userNamesFontSize,
 }) =>
     Row(
@@ -88,7 +88,7 @@ Widget profileRow({
                   ],
                 ),
               ),
-              padding: EdgeInsets.all(storieBorderRadius!),
+              padding: EdgeInsets.all(storieBorderRadius),
               child: CircleAvatar(
                 radius: storieSizeRadius,
               ),
@@ -96,7 +96,7 @@ Widget profileRow({
           ),
         ),
         Text(
-          userNames!,
+          userNames,
           style: TextStyle(
             fontSize: userNamesFontSize,
             fontWeight: FontWeight.bold,

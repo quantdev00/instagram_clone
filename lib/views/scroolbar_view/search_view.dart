@@ -33,22 +33,25 @@ class _SearchViewState extends State<SearchView> {
               ),
             ),
           ),
+          //*search items
           Expanded(
-              child: GridView.builder(
-            //
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3),
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(1.0),
-                child: Container(
-                  height: mediaQuery.width / 3,
-                  width: mediaQuery.width / 3,
-                  decoration: const BoxDecoration(color: Colors.blue),
-                ),
-              );
-            },
-          ))
+            child: GridView.builder(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+              ),
+              itemCount: 14,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  child: Container(
+                    height: mediaQuery.width / 3,
+                    width: mediaQuery.width / 3,
+                    decoration: const BoxDecoration(color: Colors.blue),
+                  ),
+                );
+              },
+            ),
+          )
         ],
       ),
     );
