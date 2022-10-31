@@ -48,6 +48,8 @@ class _ProfileViewState extends State<ProfileView> {
         ],
       ),
       body: ListView(
+        // shrinkWrap: true,
+        // physics: ScrollPhysics(),
         children: [
           Padding(
             padding: const EdgeInsets.all(12.0),
