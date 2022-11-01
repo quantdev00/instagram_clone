@@ -5,7 +5,6 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:recipe_2/constant/constants.dart';
 import 'package:recipe_2/views/scroolbar_user_profile/my_photos_scroll.dart';
 import 'package:recipe_2/widget_to_use/stories_icon.dart';
-import 'package:unicons/unicons.dart';
 
 class ProfileView extends StatefulWidget {
   const ProfileView({super.key});
@@ -18,8 +17,8 @@ class _ProfileViewState extends State<ProfileView> {
   var index = 0;
   List<Widget> myItems = [
     const MyPhotos(),
-    Text('Videos'),
-    Text('Somtething'),
+    const Text('Videos'),
+    const Text('Somtething'),
   ];
   @override
   Widget build(BuildContext context) {
