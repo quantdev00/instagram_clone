@@ -1,74 +1,54 @@
 import 'package:flutter/material.dart';
-import 'package:bloc/bloc.dart';
-import 'dart:math' as math show Random;
 
-const names = [
-  'Kobe',
-  'Mj',
-  'Steph',
-  'Ja',
-];
-
-extension RandomElement<T> on Iterable<T> {
-  T getRandomElement() => elementAt(math.Random().nextInt(length));
+@immutable
+abstract class LoadAction {
+  const LoadAction();
 }
 
-class NamesCubit extends Cubit<String?> {
-  NamesCubit() : super(null);
-  void produceRandomState() => emit(names.getRandomElement());
+@immutable
+class LoadPersonAction implements LoadAction {
+  final PersonUrl url;
+  const LoadPersonAction(this.url) : super();
 }
 
-class HomePage extends StatefulWidget {
+@immutable
+class Person {
+  final String name;
+  final int age;
+
+  const Person({
+    required this.name,
+    required this.age,
+  });
+
+  Person.fromJason(Map<String, dynamic> json)
+      : name = json['name'] as String,
+        age = json['age'] as int;
+}
+
+enum PersonUrl {
+  person1,
+  person2,
+}
+
+extension UrlString on PersonUrl {
+  String get urlString {
+    switch (this) {
+      case PersonUrl.person1:
+        return 'http://127.0.0.1:5500/lib/bloc_practice/api/person1.json';
+      case PersonUrl.person2:
+        return 'http://127.0.0.1:5500/lib/bloc_practice/api/person2.json';
+    }
+  }
+}
+
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  late final NamesCubit cubit;
-
-  @override
-  void initState() {
-    cubit = NamesCubit();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    cubit.close();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My app'),
-      ),
-      body: StreamBuilder<String?>(
-        builder: (context, snapshot) {
-          final button = TextButton(
-              onPressed: () => cubit.produceRandomState(),
-              child: Text('Pick a random name'));
-
-          switch (snapshot.connectionState) {
-            case ConnectionState.none:
-              return button;
-            case ConnectionState.waiting:
-              return button;
-            case ConnectionState.active:
-              return Column(
-                children: [
-                  Text(snapshot.data ?? ''),
-                  button,
-                ],
-              );
-            case ConnectionState.done:
-              return SizedBox();
-          }
-        },
-        stream: cubit.stream,
       ),
     );
   }
