@@ -46,6 +46,7 @@ dependencies:
   firebase_core: ^2.0.0
   icons_plus: ^3.0.0
   font_awesome_flutter: ^10.2.1
+  flutter_bloc: ^8.1.1
 
 dev_dependencies:
   flutter_test:
